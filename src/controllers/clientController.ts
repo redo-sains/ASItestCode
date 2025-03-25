@@ -1,4 +1,4 @@
-// src/controllers/clientController.ts
+
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import AWS from 'aws-sdk';
@@ -11,7 +11,7 @@ const redisClient = createClient();
 AWS.config.update({
   accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
   secretAccessKey: 'YOUR_AWS_SECRET_ACCESS_KEY',
-  region: 'YOUR_S3_BUCKET_REGION',  // e.g., 'us-east-1'
+  region: 'YOUR_S3_BUCKET_REGION',  
 });
 
 const s3 = new AWS.S3();
@@ -34,7 +34,7 @@ export const createdClient = async (req: Request, res: Response) => {
       ACL: 'public-read',  
     };
   
-    // Upload to S3
+    
     s3.upload(params, async (err, data) => {
       if (err) {
         console.log('Error saat upload gambar:', err);
@@ -133,7 +133,7 @@ export const updateClient = async (req: Request, res: Response) => {
       ACL: 'public-read',  
     };
   
-    // Upload to S3
+
     s3.upload(params, async (err, data) => {
       if (err) {
         console.log('Error saat upload gambar:', err);
